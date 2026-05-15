@@ -108,12 +108,20 @@ function RootShell({ children }: { children: React.ReactNode }) {
   );
 }
 
+import { PageTransition } from "@/components/PageTransition";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <Navbar />
+      <PageTransition>
+        <Outlet />
+      </PageTransition>
+      <Footer />
     </QueryClientProvider>
   );
 }
