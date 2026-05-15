@@ -9,38 +9,121 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServicesTrainingRouteImport } from './routes/services.training'
+import { Route as ServicesCareerRouteImport } from './routes/services.career'
+import { Route as ServicesBusinessRouteImport } from './routes/services.business'
 
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesTrainingRoute = ServicesTrainingRouteImport.update({
+  id: '/services/training',
+  path: '/services/training',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesCareerRoute = ServicesCareerRouteImport.update({
+  id: '/services/career',
+  path: '/services/career',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesBusinessRoute = ServicesBusinessRouteImport.update({
+  id: '/services/business',
+  path: '/services/business',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/services/business': typeof ServicesBusinessRoute
+  '/services/career': typeof ServicesCareerRoute
+  '/services/training': typeof ServicesTrainingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/services/business': typeof ServicesBusinessRoute
+  '/services/career': typeof ServicesCareerRoute
+  '/services/training': typeof ServicesTrainingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/services/business': typeof ServicesBusinessRoute
+  '/services/career': typeof ServicesCareerRoute
+  '/services/training': typeof ServicesTrainingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/services/business'
+    | '/services/career'
+    | '/services/training'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/services/business'
+    | '/services/career'
+    | '/services/training'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/services/business'
+    | '/services/career'
+    | '/services/training'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
+  ServicesBusinessRoute: typeof ServicesBusinessRoute
+  ServicesCareerRoute: typeof ServicesCareerRoute
+  ServicesTrainingRoute: typeof ServicesTrainingRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +131,37 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/training': {
+      id: '/services/training'
+      path: '/services/training'
+      fullPath: '/services/training'
+      preLoaderRoute: typeof ServicesTrainingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/career': {
+      id: '/services/career'
+      path: '/services/career'
+      fullPath: '/services/career'
+      preLoaderRoute: typeof ServicesCareerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/business': {
+      id: '/services/business'
+      path: '/services/business'
+      fullPath: '/services/business'
+      preLoaderRoute: typeof ServicesBusinessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
+  ServicesBusinessRoute: ServicesBusinessRoute,
+  ServicesCareerRoute: ServicesCareerRoute,
+  ServicesTrainingRoute: ServicesTrainingRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

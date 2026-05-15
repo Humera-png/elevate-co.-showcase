@@ -1,7 +1,7 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap");
 
 @custom-variant dark (&:is(.dark *));
 
@@ -37,8 +37,6 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-lime: var(--lime);
-  --color-lime-glow: var(--lime-glow);
   --font-display: "Clash Display", "Inter", sans-serif;
   --font-serif: "Instrument Serif", Georgia, serif;
   --font-sans: "Inter", system-ui, sans-serif;
@@ -46,31 +44,24 @@
 
 :root {
   --radius: 1rem;
-  --background: oklch(0.06 0 0);
-  --foreground: oklch(0.98 0 0);
-  --card: oklch(0.09 0 0);
-  --card-foreground: oklch(0.98 0 0);
-  --popover: oklch(0.09 0 0);
-  --popover-foreground: oklch(0.98 0 0);
-  --primary: oklch(0.95 0.22 115);
-  --primary-foreground: oklch(0.06 0 0);
-  --secondary: oklch(0.18 0 0);
-  --secondary-foreground: oklch(0.98 0 0);
-  --muted: oklch(0.16 0 0);
-  --muted-foreground: oklch(0.65 0 0);
+  --background: oklch(0.985 0 0); /* #FAFAFA */
+  --foreground: oklch(0.18 0 0); /* #1A1A1A */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0 0);
+  --primary: oklch(0.18 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.95 0 0);
+  --secondary-foreground: oklch(0.18 0 0);
+  --muted: oklch(0.94 0 0);
+  --muted-foreground: oklch(0.45 0 0);
   --accent: oklch(0.95 0.22 115);
-  --accent-foreground: oklch(0.06 0 0);
-  --destructive: oklch(0.65 0.25 25);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 10%);
+  --accent-foreground: oklch(0.18 0 0);
+  --destructive: oklch(0.6 0.24 25);
+  --border: oklch(0.9 0.005 250);
+  --input: oklch(0.9 0.005 250);
   --ring: oklch(0.95 0.22 115);
-  --lime: oklch(0.95 0.22 115);
-  --lime-glow: oklch(0.95 0.22 115 / 40%);
-}
-
-.dark {
-  --background: oklch(0.06 0 0);
-  --foreground: oklch(0.98 0 0);
 }
 
 @layer base {
@@ -86,24 +77,28 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+    background-image:
+      radial-gradient(rgba(0, 0, 0, 0.025) 1px, transparent 1px);
+    background-size: 4px 4px;
   }
 }
 
 @layer utilities {
   .glass {
-    background: rgba(255, 255, 255, 0.04);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 0.5px solid #E2E8F0;
   }
   .glass-strong {
-    background: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(28px) saturate(200%);
+    -webkit-backdrop-filter: blur(28px) saturate(200%);
+    border: 0.5px solid #E2E8F0;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 30px 60px -30px rgba(15, 23, 42, 0.18);
   }
   .text-lime {
-    color: #D4FF00;
+    color: #8a9d00;
   }
   .bg-lime {
     background-color: #D4FF00;
@@ -112,14 +107,24 @@
     border-color: #D4FF00;
   }
   .glow-lime {
-    box-shadow: 0 0 40px rgba(212, 255, 0, 0.25), 0 0 80px rgba(212, 255, 0, 0.1);
+    box-shadow: 0 8px 30px -8px rgba(212, 255, 0, 0.6), 0 0 0 1px rgba(26, 26, 26, 0.9);
+  }
+  .btn-lime {
+    background-color: #D4FF00;
+    color: #1A1A1A;
+    border: 1px solid #1A1A1A;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .btn-lime:hover {
+    box-shadow: 0 12px 40px -10px rgba(212, 255, 0, 0.8), 0 0 0 1px #1A1A1A;
+    transform: translateY(-1px);
   }
   .hover-glow-lime:hover {
-    box-shadow: 0 0 60px rgba(212, 255, 0, 0.35), inset 0 0 0 1px rgba(212, 255, 0, 0.4);
-    border-color: rgba(212, 255, 0, 0.4);
+    box-shadow: 0 20px 50px -20px rgba(212, 255, 0, 0.5);
+    border-color: rgba(212, 255, 0, 0.6) !important;
   }
-  .text-gradient-lime {
-    background: linear-gradient(135deg, #D4FF00 0%, #ffffff 100%);
+  .text-gradient-charcoal {
+    background: linear-gradient(135deg, #1A1A1A 0%, #6b7280 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -132,15 +137,25 @@
     z-index: 0;
   }
   .input-glow:focus {
-    border-color: #D4FF00 !important;
-    box-shadow: 0 0 0 1px #D4FF00, 0 0 20px rgba(212, 255, 0, 0.3);
+    border-color: #1A1A1A !important;
+    box-shadow: 0 0 0 3px rgba(212, 255, 0, 0.35);
     outline: none;
   }
+  .input-error {
+    border-color: oklch(0.6 0.24 25) !important;
+  }
   @keyframes pulse-lime {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(212, 255, 0, 0.4); }
-    50% { box-shadow: 0 0 0 8px rgba(212, 255, 0, 0); }
+    0%, 100% { box-shadow: 0 0 0 0 rgba(212, 255, 0, 0.6); }
+    50% { box-shadow: 0 0 0 10px rgba(212, 255, 0, 0); }
   }
   .pulse-lime {
     animation: pulse-lime 2s ease-out infinite;
+  }
+  .grayscale-hover {
+    filter: grayscale(100%);
+    transition: filter 0.5s ease;
+  }
+  .grayscale-hover:hover {
+    filter: grayscale(0%);
   }
 }
