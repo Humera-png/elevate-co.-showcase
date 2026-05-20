@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 import { MagneticButton } from "./MagneticButton";
+import { Logo } from "./Logo";
 
 const links = [
   { label: "Home", to: "/" as const },
@@ -36,13 +37,14 @@ export function Navbar() {
       initial={{ y: -40, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[min(1200px,calc(100%-2rem))] glass rounded-full px-3 py-2 flex items-center justify-between transition-all ${scrolled ? "shadow-[0_20px_60px_-30px_rgba(0,0,0,0.25)]" : ""}`}
+      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[min(1200px,calc(100%-2rem))] glass rounded-full px-3 py-2 flex items-center justify-between transition-all ${scrolled ? "shadow-[0_20px_60px_-30px_rgba(7,59,34,0.25)]" : ""}`}
     >
-      <Link to="/" className="flex items-center gap-2 pl-3">
-        <div className="h-7 w-7 rounded-full bg-lime grid place-items-center border border-foreground">
-          <span className="text-[10px] font-bold text-foreground">E</span>
-        </div>
-        <span className="font-display text-lg tracking-tight">Elevate <span className="text-lime">&</span> Co.</span>
+      <Link to="/" className="flex items-center gap-2.5 pl-2">
+        <Logo size={32} />
+        <span className="font-display text-lg tracking-tight leading-none flex flex-col">
+          <span className="text-foreground">ZOUM</span>
+          <span className="text-[8px] uppercase tracking-[0.25em] text-muted-foreground mt-0.5">Placement Services</span>
+        </span>
       </Link>
 
       <div className="hidden md:flex items-center gap-1 text-sm relative">
@@ -61,11 +63,7 @@ export function Navbar() {
                     className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-72 glass-strong rounded-2xl p-2"
                   >
                     {serviceItems.map(s => (
-                      <Link
-                        key={s.to}
-                        to={s.to}
-                        className="block px-4 py-3 rounded-xl hover:bg-black/5 transition group"
-                      >
+                      <Link key={s.to} to={s.to} className="block px-4 py-3 rounded-xl hover:bg-black/5 transition group">
                         <div className="text-sm font-medium flex items-center justify-between">
                           {s.label}
                           <ArrowUpRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 transition" />
@@ -79,11 +77,7 @@ export function Navbar() {
             );
           }
           return (
-            <Link
-              key={l.label}
-              to={l.to}
-              className={`px-4 py-2 rounded-full transition ${active ? "text-foreground bg-black/5" : "text-foreground/60 hover:text-foreground hover:bg-black/5"}`}
-            >
+            <Link key={l.label} to={l.to} className={`px-4 py-2 rounded-full transition ${active ? "text-foreground bg-black/5" : "text-foreground/60 hover:text-foreground hover:bg-black/5"}`}>
               {l.label}
             </Link>
           );
@@ -101,19 +95,11 @@ export function Navbar() {
       </button>
 
       {open && (
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="md:hidden absolute top-full mt-3 left-0 right-0 glass-strong rounded-2xl p-3 flex flex-col"
-        >
+        <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="md:hidden absolute top-full mt-3 left-0 right-0 glass-strong rounded-2xl p-3 flex flex-col">
           {links.map(l => (
-            <Link key={l.label} to={l.to} className="px-4 py-3 rounded-xl text-sm hover:bg-black/5">
-              {l.label}
-            </Link>
+            <Link key={l.label} to={l.to} className="px-4 py-3 rounded-xl text-sm hover:bg-black/5">{l.label}</Link>
           ))}
-          <Link to="/contact" className="mt-2 btn-lime text-center text-sm font-medium px-5 py-3 rounded-full">
-            Book Now
-          </Link>
+          <Link to="/contact" className="mt-2 btn-lime text-center text-sm font-medium px-5 py-3 rounded-full">Book Now</Link>
         </motion.div>
       )}
     </motion.nav>
