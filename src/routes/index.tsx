@@ -9,9 +9,9 @@ import { ContactForm } from "@/components/ContactForm";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Elevate & Co. — Architecting Alpha" },
-      { name: "description", content: "Premium consultancy scaling companies and accelerating careers through data-driven strategy." },
-      { property: "og:title", content: "Elevate & Co. — Architecting Alpha" },
+      { title: "ZOUM Placement Services — Architecting Alpha" },
+      { name: "description", content: "ZOUM Placement Services — premium consultancy scaling companies and accelerating careers through data-driven strategy." },
+      { property: "og:title", content: "ZOUM Placement Services" },
       { property: "og:description", content: "Business & Career Mastery consultancy." },
     ],
   }),
@@ -35,22 +35,22 @@ function GlassVisual() {
 
   return (
     <div ref={ref} onMouseMove={onMove} onMouseLeave={onLeave} className="relative aspect-square w-full max-w-[560px] mx-auto" style={{ perspective: 1200 }}>
-      <div className="ambient-orb h-72 w-72 -top-10 -left-10" style={{ background: "rgba(212,255,0,0.4)" }} />
-      <div className="ambient-orb h-80 w-80 bottom-0 right-0" style={{ background: "rgba(180,200,255,0.5)" }} />
+      <div className="ambient-orb h-72 w-72 -top-10 -left-10" style={{ background: "rgba(31,203,107,0.45)" }} />
+      <div className="ambient-orb h-80 w-80 bottom-0 right-0" style={{ background: "rgba(14,124,66,0.35)" }} />
 
       <motion.div style={{ rotateX: rx, rotateY: ry, transformStyle: "preserve-3d" }} className="relative h-full w-full">
         <motion.div animate={{ y: [0, -12, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute inset-8 rounded-3xl glass-strong" style={{ transform: "translateZ(40px)" }} />
         <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.5 }} className="absolute top-20 right-0 h-48 w-48 rounded-3xl glass-strong overflow-hidden" style={{ transform: "translateZ(80px)" }}>
           <div className="p-5 text-xs text-muted-foreground">PORTFOLIO ROI</div>
-          <div className="px-5 font-display text-4xl"><span className="text-foreground">+247</span><span className="text-lime">%</span></div>
-          <div className="mt-4 mx-5 h-16 bg-gradient-to-t from-lime/60 to-transparent rounded-md" />
+          <div className="px-5 font-display text-4xl"><span className="text-foreground">+247</span><span className="text-brand">%</span></div>
+          <div className="mt-4 mx-5 h-16 rounded-md" style={{ background: "linear-gradient(to top, rgba(31,203,107,0.65), transparent)" }} />
         </motion.div>
         <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1 }} className="absolute bottom-12 left-0 h-40 w-56 rounded-3xl glass-strong p-5" style={{ transform: "translateZ(120px)" }}>
-          <div className="text-[11px] text-muted-foreground">CLIENTS Q4</div>
+          <div className="text-[11px] text-muted-foreground">CLIENTS PLACED · Q4</div>
           <div className="mt-1 font-display text-3xl text-foreground">42</div>
           <div className="mt-3 flex -space-x-2">
             {[0,1,2,3].map(i => (
-              <div key={i} className="h-7 w-7 rounded-full border border-foreground/20" style={{background: i===3 ? "#D4FF00" : "rgba(255,255,255,0.8)"}} />
+              <div key={i} className="h-7 w-7 rounded-full border border-foreground/20" style={{background: i===3 ? "var(--brand)" : "rgba(255,255,255,0.85)"}} />
             ))}
           </div>
         </motion.div>
@@ -64,7 +64,7 @@ function GlassVisual() {
 function Hero() {
   return (
     <section id="home" className="relative min-h-screen pt-32 pb-20 px-6 overflow-hidden">
-      <div className="ambient-orb h-[500px] w-[500px] top-20 -left-40" style={{ background: "rgba(212,255,0,0.25)" }} />
+      <div className="ambient-orb h-[500px] w-[500px] top-20 -left-40" style={{ background: "rgba(31,203,107,0.28)" }} />
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
         <div>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-xs text-muted-foreground mb-8">
@@ -77,7 +77,7 @@ function Hero() {
             Business & Career <span className="text-gradient-charcoal">Mastery.</span>
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.8 }} className="mt-8 text-lg text-muted-foreground max-w-xl">
-            We scale companies and accelerate careers through data-driven strategy, executive precision, and uncompromising execution.
+            ZOUM Placement Services scales companies and accelerates careers through data-driven strategy, executive precision, and uncompromising execution.
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="mt-10 flex flex-wrap items-center gap-4">
             <MagneticButton href="/contact" className="btn-lime font-medium px-7 py-4 rounded-full inline-flex items-center">
@@ -116,8 +116,8 @@ function ServiceCard({ s, i }: { s: typeof services[number]; i: number }) {
       <div className="absolute -top-20 -right-20 h-48 w-48 rounded-full bg-lime/0 group-hover:bg-lime/30 blur-3xl transition-all duration-700" />
       <Link to={s.to} className="relative z-10 flex flex-col h-full">
         <div className="flex items-start justify-between">
-          <div className="h-12 w-12 rounded-2xl glass-strong grid place-items-center group-hover:bg-lime transition">
-            <Icon className="h-5 w-5 text-foreground" />
+          <div className="h-12 w-12 rounded-2xl glass-strong grid place-items-center group-hover:bg-lime group-hover:text-white transition">
+            <Icon className="h-5 w-5" />
           </div>
           <ArrowUpRight className="h-5 w-5 text-foreground/30 group-hover:text-foreground group-hover:rotate-45 transition" />
         </div>
@@ -159,7 +159,7 @@ function About() {
   const words = "Precision over noise. Results over rhetoric.".split(" ");
   return (
     <section id="about" ref={ref} className="relative px-6 py-40">
-      <div className="ambient-orb h-96 w-96 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style={{ background: "rgba(212,255,0,0.18)" }} />
+      <div className="ambient-orb h-96 w-96 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style={{ background: "rgba(31,203,107,0.18)" }} />
       <div className="max-w-5xl mx-auto text-center relative z-10">
         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-xs uppercase tracking-[0.3em] text-lime mb-8">/ our philosophy</motion.div>
         <p className="font-serif italic text-4xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight">
@@ -171,7 +171,7 @@ function About() {
           })}
         </p>
         <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }} className="mt-12 text-muted-foreground max-w-xl mx-auto">
-          Founded in 2014, Elevate & Co. is a private advisory firm partnering with operators who refuse the average curve.
+          Founded in 2014, ZOUM Placement Services is a private advisory firm partnering with operators who refuse the average curve.
         </motion.p>
         <Link to="/about" className="mt-8 inline-flex items-center gap-2 text-sm text-foreground hover:text-lime transition">
           Meet the advisory board <ArrowUpRight className="h-4 w-4" />
@@ -185,12 +185,12 @@ function Stats() {
   const stats = [
     { v: 150, suffix: "+", label: "Companies Scaled" },
     { v: 500, prefix: "$", suffix: "M+", label: "Revenue Generated" },
-    { v: 1000, suffix: "+", label: "Careers Transformed" },
+    { v: 1000, suffix: "+", label: "Careers Placed" },
   ];
   return (
     <section className="px-6 pb-32">
-      <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="max-w-6xl mx-auto glass-strong rounded-3xl p-10 md:p-14 grid md:grid-cols-3 gap-10 relative overflow-hidden">
-        <div className="ambient-orb h-72 w-72 -top-20 left-1/2 -translate-x-1/2" style={{ background: "rgba(212,255,0,0.35)" }} />
+      <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.8 }} className="max-w-6xl mx-auto glass-strong rounded-3xl p-10 md:p-14 grid md:grid-cols-3 gap-10 relative overflow-hidden">
+        <div className="ambient-orb h-72 w-72 -top-20 left-1/2 -translate-x-1/2" style={{ background: "rgba(31,203,107,0.35)" }} />
         {stats.map((s, i) => (
           <div key={i} className="relative text-center md:text-left">
             <div className="font-display text-5xl md:text-6xl tracking-tight text-foreground">
@@ -207,7 +207,7 @@ function Stats() {
 function Contact() {
   return (
     <section id="contact" className="relative px-6 py-32">
-      <div className="ambient-orb h-[400px] w-[400px] top-0 right-0" style={{ background: "rgba(212,255,0,0.2)" }} />
+      <div className="ambient-orb h-[400px] w-[400px] top-0 right-0" style={{ background: "rgba(31,203,107,0.22)" }} />
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 relative z-10">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <div className="text-xs uppercase tracking-[0.3em] text-lime mb-4">/ contact</div>
@@ -219,7 +219,7 @@ function Contact() {
             <div className="text-xs uppercase tracking-wider text-muted-foreground mb-4">Global Presence</div>
             <div className="grid grid-cols-3 gap-3">
               {["NYC", "LDN", "SGP", "DXB", "TYO", "SYD"].map(c => (
-                <div key={c} className="aspect-square glass-strong rounded-xl grid place-items-center text-xs font-display tracking-widest hover:border-foreground transition">{c}</div>
+                <div key={c} className="aspect-square glass-strong rounded-xl grid place-items-center text-xs font-display tracking-widest hover:border-lime transition">{c}</div>
               ))}
             </div>
           </div>
