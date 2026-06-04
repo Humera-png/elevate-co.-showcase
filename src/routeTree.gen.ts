@@ -15,6 +15,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesTrainingRouteImport } from './routes/services.training'
 import { Route as ServicesCareerRouteImport } from './routes/services.career'
 import { Route as ServicesBusinessRouteImport } from './routes/services.business'
+import { Route as ServicesBpoOperationsRouteImport } from './routes/services.bpo-operations'
 import { Route as ServicesAiAutomationRouteImport } from './routes/services.ai-automation'
 
 const ContactRoute = ContactRouteImport.update({
@@ -47,6 +48,11 @@ const ServicesBusinessRoute = ServicesBusinessRouteImport.update({
   path: '/services/business',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesBpoOperationsRoute = ServicesBpoOperationsRouteImport.update({
+  id: '/services/bpo-operations',
+  path: '/services/bpo-operations',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesAiAutomationRoute = ServicesAiAutomationRouteImport.update({
   id: '/services/ai-automation',
   path: '/services/ai-automation',
@@ -58,6 +64,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/services/ai-automation': typeof ServicesAiAutomationRoute
+  '/services/bpo-operations': typeof ServicesBpoOperationsRoute
   '/services/business': typeof ServicesBusinessRoute
   '/services/career': typeof ServicesCareerRoute
   '/services/training': typeof ServicesTrainingRoute
@@ -67,6 +74,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/services/ai-automation': typeof ServicesAiAutomationRoute
+  '/services/bpo-operations': typeof ServicesBpoOperationsRoute
   '/services/business': typeof ServicesBusinessRoute
   '/services/career': typeof ServicesCareerRoute
   '/services/training': typeof ServicesTrainingRoute
@@ -77,6 +85,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/services/ai-automation': typeof ServicesAiAutomationRoute
+  '/services/bpo-operations': typeof ServicesBpoOperationsRoute
   '/services/business': typeof ServicesBusinessRoute
   '/services/career': typeof ServicesCareerRoute
   '/services/training': typeof ServicesTrainingRoute
@@ -88,6 +97,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/services/ai-automation'
+    | '/services/bpo-operations'
     | '/services/business'
     | '/services/career'
     | '/services/training'
@@ -97,6 +107,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/services/ai-automation'
+    | '/services/bpo-operations'
     | '/services/business'
     | '/services/career'
     | '/services/training'
@@ -106,6 +117,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/services/ai-automation'
+    | '/services/bpo-operations'
     | '/services/business'
     | '/services/career'
     | '/services/training'
@@ -116,6 +128,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   ServicesAiAutomationRoute: typeof ServicesAiAutomationRoute
+  ServicesBpoOperationsRoute: typeof ServicesBpoOperationsRoute
   ServicesBusinessRoute: typeof ServicesBusinessRoute
   ServicesCareerRoute: typeof ServicesCareerRoute
   ServicesTrainingRoute: typeof ServicesTrainingRoute
@@ -165,6 +178,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesBusinessRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/bpo-operations': {
+      id: '/services/bpo-operations'
+      path: '/services/bpo-operations'
+      fullPath: '/services/bpo-operations'
+      preLoaderRoute: typeof ServicesBpoOperationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/ai-automation': {
       id: '/services/ai-automation'
       path: '/services/ai-automation'
@@ -180,6 +200,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   ServicesAiAutomationRoute: ServicesAiAutomationRoute,
+  ServicesBpoOperationsRoute: ServicesBpoOperationsRoute,
   ServicesBusinessRoute: ServicesBusinessRoute,
   ServicesCareerRoute: ServicesCareerRoute,
   ServicesTrainingRoute: ServicesTrainingRoute,
